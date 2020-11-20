@@ -31,7 +31,10 @@ if genre == 'desc_df':
 
 elif genre == 'feature_df':
   st.subheader("Berdasarkan Fitur")
-  list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
+  list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 
+                                               'diabetes', 'ejection_fraction', 'high_blood_pressure', 
+                                               'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 
+                                               'smoking', 'time', 'DEATH_EVENT'])
   hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].max()] # berdasarkan maximum
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
@@ -51,9 +54,15 @@ elif genre == 'feature_df':
 elif genre == 'group_df':
   st.subheader("Berdasarkan Group")
   list_feature = st.multiselect("Berdasarkan?", 
-                    ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'], 
+                    ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
+                     'ejection_fraction', 'high_blood_pressure', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'], 
                     ['age'])
-  hasil = heart_df.groupby(list_feature).age.describe() # berdasarkan group
+  list_select = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 
+                                               'diabetes', 'ejection_fraction', 'high_blood_pressure', 
+                                               'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 
+                                               'smoking', 'time', 'DEATH_EVENT'])
+  hasil = heart_df.groupby(list_feature).[list_select].describe() # berdasarkan group
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
   genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
