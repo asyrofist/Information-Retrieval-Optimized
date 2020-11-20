@@ -51,18 +51,8 @@ if genre == 'extract_df':
     rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
     y = hasil[list_item]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-    st.write(y_train, y_test)
-    if klas_df == 'dt':
-        sc = StandardScaler() # standarization
-        X_train = sc.fit_transform(X_train)
-        X_test = sc.transform(X_test)
-        Dt = DecisionTreeClassifier()
-        Dt.fit(X_train, y_train) # fitting
-        y_pred = Dt.predict(X_test)
-        traintestDT(X, y, rasio)
-        kelas = classification_report(y_test, y_pred)
-        st.write(kelas)
+    st.write(X)
+    st.write(y)
     
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
