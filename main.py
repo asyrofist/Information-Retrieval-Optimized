@@ -3,10 +3,11 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 
-st.head("Dataset Heart")
+st.header("Dataset Heart")
 heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
 
+st.sidebar.header("Fitur Parameter")
 desc          = st.sidbear.checkbox("berdasarkan deskripsi")
 df_feature    = st.sidebar.checbox("berdasarkan fitur")
 group_feature = st.sidebar.checkbox("berdasarkan group")
