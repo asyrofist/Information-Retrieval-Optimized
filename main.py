@@ -12,7 +12,7 @@ st.write(heart_df)
 st.sidebar.header("Fitur Parameter")
 genre = st.sidebar.radio("What do you choose",('desc_df', 'feature_df', 'group_df'))
 if genre == 'desc_df':
-  st.write("Berdasarkan Deskripsi")
+  st.subheader("Berdasarkan Deskripsi")
   hasil = heart_df.describe()
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
@@ -30,7 +30,7 @@ if genre == 'desc_df':
     st.pyplot(fig)
 
 elif genre == 'feature_df':
-  st.write("Berdasarkan Fitur")
+  st.subheader("Berdasarkan Fitur")
   list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
   hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].max()] # berdasarkan maximum
   st.write(hasil)
@@ -49,7 +49,7 @@ elif genre == 'feature_df':
     st.pyplot(fig)
     
 elif genre == 'group_df':
-  st.write("Berdasarkan Group")
+  st.subheader("Berdasarkan Group")
   list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
   hasil = heart_df.groupby(list_feature).age.describe() # berdasarkan group
   st.write(hasil)
