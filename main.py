@@ -62,8 +62,10 @@ elif genre == 'group_df':
                                                'diabetes', 'ejection_fraction', 'high_blood_pressure', 
                                                'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 
                                                'smoking', 'time', 'DEATH_EVENT'])
-  hasil = heart_df.groupby(list_feature)[list_select].describe() # berdasarkan group
+  hasil = heart_df.groupby(list_feature)[list_select] # berdasarkan group
   st.write(hasil)
+  hasil_desc = hasil.describe()
+  st.write*hasil_desc)
   st.sidebar.subheader("Evaluation Parameter")
   genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
   if genre_df == 'histogram':
