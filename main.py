@@ -136,7 +136,7 @@ elif genre == 'desc_df':
     klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'svc', 'knn'))
     list_item = st.selectbox("Feauture Select?", ['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'])
     X = hasil
-    y = heart_df[list_item]
+    y = hasil[list_item]
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
     if klas_df == 'dt' :
