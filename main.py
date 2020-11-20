@@ -127,7 +127,7 @@ if genre == 'extract_df':
     
     st.sidebar.subheader("Classification Parameter")
     klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'rfr', 'svc', 'svr', 'knn'))
-    rasio = st.sidebar.slider('What size?, 0, 0.3, 0.6)
+    rasio = st.sidebar.slider('What size?', 0.1, 0.3, 0.6)
     if klas_df == 'dt':
       traintestDT(X, y, rasio)
                               
