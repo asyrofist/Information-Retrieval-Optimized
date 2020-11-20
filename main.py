@@ -13,6 +13,11 @@ from sklearn.svm import SVC, SVR
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
+st.set_page_config(
+     page_title="Tugas STKI",
+     initial_sidebar_state="expanded",
+ )
+
 # st.set_option('deprecation.showPyplotGlobalUse', False)
 st.header("Dataset Heart")
 heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
