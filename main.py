@@ -5,16 +5,93 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.naive_bayes import GaussianNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.svm import SVC, SVR
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+
+def traintestDT(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  Dt = DecisionTreeClassifier()
+  Dt.fit(X_train, y_train) # fitting
+  y_pred = Dt.predict(X_test)
+  return y_test, y_pred
+
+def traintestGNB(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  gnb = GaussianNB()
+  gnb.fit(X_train, y_train)
+  y_pred = Dt.predict(X_test)
+  return y_test, y_pred
+
+def traintestLR(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  lg = LogisticRegression(C = 2)
+  lg.fit(X_train, y_train) # fitting
+  y_pred = Dt.predict(X_test)
+  return y_test, y_pred
+
+def traintestRFC(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  rfc = RandomForestClassifier()
+  rfc.fit(X_train, y_train)
+  y_pred = Dt.predict(X_test)
+  return y_test, y_pred
+
+  
+def traintestRFR(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  rfr = RandomForestRegressor(n_estimators = 100)
+  rfr.fit(X_train,y_train)
+
+def traintestSVC(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  ppn = SVC(C=1, random_state = 0)
+  ppn.fit(X_train,y_train)
+  y_pred = Dt.predict(X_test)
+  return y_test, y_pred
+
+
+def traintestSVR(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  svm = SVR(C = 2, kernel = 'rbf', degree = 2)
+  svm.fit(X_train, y_train)
+  y_pred = Dt.predict(X_test)
+  return y_test, y_pred
+
+def traintestKNN(X, y, rasio):
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+  sc = StandardScaler() # standarization
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.transform(X_test)
+  Knn = KNeighborsClassifier(n_neighbors = 2, p =2, metric = 'minkowski')
+  Knn = Knn.fit(X_train,y_train)
+  y_pred = Knn.predict(X_test)
+  return y_test, y_pred
 
 # st.set_option('deprecation.showPyplotGlobalUse', False)
 st.header("Dataset Heart")
@@ -47,6 +124,47 @@ if genre == 'extract_df':
     correlation = hasil.corr()
     sns.heatmap(correlation)
     st.pyplot(fig)
+    
+    st.sidebar.subheader("Classification Parameter")
+    klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'rfr', 'svc', 'svr', 'knn'))
+    rasio = st.sidebar.slider('What size?, 0, 0.3, 0.6)
+    if klas_df == 'dt':
+      traintestDT(X, y, rasio)
+                              
+    IF klas_df == 'lr':
+      traintestLR(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
+                              
+    elif klas_df == 'gnb':
+      traintestGNB(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
+                              
+    elif klas_df == 'rfc':
+      traintestRFC(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
+                              
+    elif klas_df == 'rfr':
+      traintestRFR(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
+                              
+    elif klas_df == 'svc':
+      traintestSVC(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
+                              
+    elif klas_df == 'svr':
+      traintestSVR(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
+                              
+    elif klas_df == 'knn':
+      traintestKNN(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
     
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
