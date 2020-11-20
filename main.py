@@ -9,7 +9,7 @@ st.write(heart_df)
 
 st.sidebar.header("Fitur Parameter")
 desc          = st.sidebar.checkbox("berdasarkan deskripsi")
-df_feature    = st.sidebar.checbox("berdasarkan fitur")
+df_feature    = st.sidebar.checkbox("berdasarkan fitur")
 group_feature = st.sidebar.checkbox("berdasarkan group")
 if desc:
   hasil = heart_df.describe()
