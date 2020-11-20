@@ -46,14 +46,14 @@ if genre == 'extract_df':
     st.pyplot(fig)
     
     st.sidebar.subheader("Classification Parameter")
+    rasio = st.sidebar.slider('How many rasio?', 0.1, 0.6, 0.3)
     klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'svc', 'knn'))
     list_item = st.selectbox("Feauture Select?", ['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'])
-    rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
     y = heart_df[list_item]
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-    if klas_df == 'dt' :
+    elif klas_df == 'dt' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
@@ -61,9 +61,12 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      fig, correlation = plt.subplots()
+      correlation = hasil_report.corr()
+      sns.heatmap(correlation)
+      st.pyplot(fig)
       
-    if klas_df == 'gnb' :
+    elif klas_df == 'gnb' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
@@ -71,9 +74,12 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      fig, correlation = plt.subplots()
+      correlation = hasil_report.corr()
+      sns.heatmap(correlation)
+      st.pyplot(fig)
       
-    if klas_df == 'lr' :
+    elif klas_df == 'lr' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
@@ -81,9 +87,12 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      fig, correlation = plt.subplots()
+      correlation = hasil_report.corr()
+      sns.heatmap(correlation)
+      st.pyplot(fig)
       
-    if klas_df == 'rfc' :
+    elif klas_df == 'rfc' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
@@ -91,9 +100,12 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      fig, correlation = plt.subplots()
+      correlation = hasil_report.corr()
+      sns.heatmap(correlation)
+      st.pyplot(fig)
       
-    if klas_df == 'svc' :
+    elif klas_df == 'svc' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
@@ -101,9 +113,12 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      fig, correlation = plt.subplots()
+      correlation = hasil_report.corr()
+      sns.heatmap(correlation)
+      st.pyplot(fig)
 
-    if klas_df == 'knn' :
+    elif klas_df == 'knn' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
@@ -111,7 +126,10 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      fig, correlation = plt.subplots()
+      correlation = hasil_report.corr()
+      sns.heatmap(correlation)
+      st.pyplot(fig)
 
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
