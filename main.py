@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 
-
 st.header("Dataset Heart")
 heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
@@ -15,11 +14,13 @@ group_feature = st.sidebar.checkbox("berdasarkan group")
 if desc:
   hasil = heart_df.describe()
   st.write(hasil)
+  st.sidebar.subheader("Evaluation Parameter")
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    histo = hasil.hist()
-    st.write(histo)
+    hist_data = hasil.hist()
+    fig = ff.create_distplot(hist_data)
+    st.plotly_chart(fig, use_container_width=True)
   elif korelasi:
     correlation = heart_df.corr()
     sns.heatmap(correlation)
@@ -29,11 +30,13 @@ elif df_feature:
   list_feature = st.sidebar.selectbox("Berdasarkan?", ['max', 'min', 'average'])
   hasil = heart_df[heart_df.anaemia == heart_df.anaemia.list_feature()] # berdasarkan maximum
   st.write(hasil)
+  st.sidebar.subheader("Evaluation Parameter")
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    histo = hasil.hist()
-    st.write(histo)
+    fig, ax = plt.subplots()
+    ax.hist(hasil)
+    st.pyplot(fig)
   elif korelasi:
     correlation = heart_df.corr()
     sns.heatmap(correlation)
@@ -44,11 +47,12 @@ elif group_feature:
   data_feature = st.sidebar.selectbox("Berdasarkan?", ['age	anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
   hasil = heart_df.groupby(data_feature).list_feature.describe() # berdasarkan group
   st.write(hasil)
+  st.sidebar.subheader("Evaluation Parameter")
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    histo = hasil.hist()
-    st.write(histo)
+    hist_data = hasil.hist()
+    fig = ff.create_distplot(hist_data)
   elif korelasi:
     correlation = heart_df.corr()
     sns.heatmap(correlation)
