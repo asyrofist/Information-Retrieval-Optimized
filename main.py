@@ -50,7 +50,7 @@ if genre == 'extract_df':
     list_item = st.selectbox("Feauture Select?", ['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'])
     rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
-    y = hasil[list_item]
+    y = heart_df[list_item]
     st.write(X)
     st.write(y)
     
