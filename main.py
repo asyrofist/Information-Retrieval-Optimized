@@ -62,7 +62,7 @@ if genre == 'extract_df':
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
       fig, correlation = plt.subplots()
-      correlation = hasil_report.corr()
+      correlation = hasil_report
       sns.heatmap(correlation)
       st.pyplot(fig)
       
@@ -75,7 +75,7 @@ if genre == 'extract_df':
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
       fig, correlation = plt.subplots()
-      correlation = hasil_report.corr()
+      correlation = hasil_report
       sns.heatmap(correlation)
       st.pyplot(fig)
       
@@ -88,7 +88,7 @@ if genre == 'extract_df':
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
       fig, correlation = plt.subplots()
-      correlation = hasil_report.corr()
+      correlation = hasil_report
       sns.heatmap(correlation)
       st.pyplot(fig)
       
@@ -101,7 +101,7 @@ if genre == 'extract_df':
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
       fig, correlation = plt.subplots()
-      correlation = hasil_report.corr()
+      correlation = hasil_report
       sns.heatmap(correlation)
       st.pyplot(fig)
       
@@ -114,7 +114,7 @@ if genre == 'extract_df':
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
       fig, correlation = plt.subplots()
-      correlation = hasil_report.corr()
+      correlation = hasil_report
       sns.heatmap(correlation)
       st.pyplot(fig)
 
@@ -127,7 +127,7 @@ if genre == 'extract_df':
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
       fig, correlation = plt.subplots()
-      correlation = hasil_report.corr()
+      correlation = hasil_report
       sns.heatmap(correlation)
       st.pyplot(fig)
 
