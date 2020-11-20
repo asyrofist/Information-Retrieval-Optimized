@@ -17,7 +17,9 @@ if genre == 'extract_df':
                     ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
                      'ejection_fraction', 'high_blood_pressure', 'platelets', 
                      'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'], 
-                    ['age'])
+                    ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
+                     'ejection_fraction', 'high_blood_pressure', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
   hasil = heart_df[list_feature]
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
