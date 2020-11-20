@@ -128,9 +128,10 @@ if genre == 'extract_df':
     st.sidebar.subheader("Classification Parameter")
     klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'rfr', 'svc', 'svr', 'knn'))
     list_item = st.selectbox("Feauture Select?", ['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'])
-    rasio = st.sidebar.slider('What size?', 0.1, 0.3, 0.6)
+    rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
     y = hasil[list_item]
+    write(y)
     
     if klas_df == 'dt':
       traintestDT(X, y, rasio)
