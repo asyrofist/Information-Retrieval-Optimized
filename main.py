@@ -13,86 +13,6 @@ from sklearn.svm import SVC, SVR
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
-def traintestDT(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  Dt = DecisionTreeClassifier()
-  Dt.fit(X_train, y_train) # fitting
-  y_pred = Dt.predict(X_test)
-  return y_test, y_pred
-
-def traintestGNB(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  gnb = GaussianNB()
-  gnb.fit(X_train, y_train)
-  y_pred = Dt.predict(X_test)
-  return y_test, y_pred
-
-def traintestLR(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  lg = LogisticRegression(C = 2)
-  lg.fit(X_train, y_train) # fitting
-  y_pred = Dt.predict(X_test)
-  return y_test, y_pred
-
-def traintestRFC(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  rfc = RandomForestClassifier()
-  rfc.fit(X_train, y_train)
-  y_pred = Dt.predict(X_test)
-  return y_test, y_pred
-
-  
-def traintestRFR(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  rfr = RandomForestRegressor(n_estimators = 100)
-  rfr.fit(X_train,y_train)
-
-def traintestSVC(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  ppn = SVC(C=1, random_state = 0)
-  ppn.fit(X_train,y_train)
-  y_pred = Dt.predict(X_test)
-  return y_test, y_pred
-
-
-def traintestSVR(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  svm = SVR(C = 2, kernel = 'rbf', degree = 2)
-  svm.fit(X_train, y_train)
-  y_pred = Dt.predict(X_test)
-  return y_test, y_pred
-
-def traintestKNN(X, y, rasio):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-  sc = StandardScaler() # standarization
-  X_train = sc.fit_transform(X_train)
-  X_test = sc.transform(X_test)
-  Knn = KNeighborsClassifier(n_neighbors = 2, p =2, metric = 'minkowski')
-  Knn = Knn.fit(X_train,y_train)
-  y_pred = Knn.predict(X_test)
-  return y_test, y_pred
-
 # st.set_option('deprecation.showPyplotGlobalUse', False)
 st.header("Dataset Heart")
 heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
@@ -131,12 +51,18 @@ if genre == 'extract_df':
     rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
     y = hasil[list_item]
-    write(y)
-    
+    st.write(Y)
     if klas_df == 'dt':
-      traintestDT(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+        sc = StandardScaler() # standarization
+        X_train = sc.fit_transform(X_train)
+        X_test = sc.transform(X_test)
+        Dt = DecisionTreeClassifier()
+        Dt.fit(X_train, y_train) # fitting
+        y_pred = Dt.predict(X_test)
+        traintestDT(X, y, rasio)
+        kelas = classification_report(y_test, y_pred)
+        st.write(kelas)
                               
     if klas_df == 'lr':
       traintestLR(X, y, rasio)
