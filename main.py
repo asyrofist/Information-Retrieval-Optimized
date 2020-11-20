@@ -137,7 +137,7 @@ elif genre == 'feature_df':
                                                'diabetes', 'ejection_fraction', 'high_blood_pressure', 
                                                'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 
                                                'smoking', 'time', 'DEATH_EVENT'])
-  list_size = st.radio("What Size?", ['max', 'min', 'average'])
+  list_size = st.radio("What Size?", ['max', 'min'])
   if list_size == 'max':
     hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].max()] # berdasarkan maximum
     st.write(hasil)
@@ -170,22 +170,6 @@ elif genre == 'feature_df':
       correlation = heart_df.corr()
       sns.heatmap(correlation)
       st.pyplot(fig)    
-  elif list_size == 'average':
-    hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].mean()] # berdasarkan maximum
-    st.write(hasil)
-    st.sidebar.subheader("Evaluation Parameter")
-    genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
-    if genre_df == 'histogram':
-      st.subheader("Histogram Parameter")
-      fig, ax = plt.subplots()
-      ax.hist(hasil)
-      st.pyplot(fig)
-    elif genre_df == 'korelasi':
-      st.subheader("Heatmap Correlation")
-      fig, correlation = plt.subplots()
-      correlation = hasil.corr()
-      sns.heatmap(correlation)
-      st.pyplot(fig)     
       
 elif genre == 'group_df':
   st.subheader("Based on Group")
