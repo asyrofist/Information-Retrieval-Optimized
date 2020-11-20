@@ -61,7 +61,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      st.text(hasil_report)
       
     elif klas_df == 'gnb' :
       sc = StandardScaler() # standarization
@@ -71,7 +71,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      st.text(hasil_report)
       
     elif klas_df == 'lr' :
       sc = StandardScaler() # standarization
@@ -81,7 +81,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      st.text(hasil_report)
       
     elif klas_df == 'rfc' :
       sc = StandardScaler() # standarization
@@ -91,7 +91,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      st.text(hasil_report)
       
     elif klas_df == 'svc' :
       sc = StandardScaler() # standarization
@@ -101,7 +101,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      st.text(hasil_report)
 
     elif klas_df == 'knn' :
       sc = StandardScaler() # standarization
@@ -111,7 +111,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      st.write(hasil_report)
+      st.text(hasil_report)
       
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
