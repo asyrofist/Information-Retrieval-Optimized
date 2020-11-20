@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 
 st.head("Dataset Heart")
-heart_df = pd.read_csv("/content/drive/MyDrive/stki_proposed/heart_failure_clinical_records_dataset.csv")
+heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
 
 desc          = st.sidbear.checkbox("berdasarkan deskripsi")
