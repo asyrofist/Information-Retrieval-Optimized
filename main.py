@@ -33,8 +33,7 @@ if desc:
     
 
 elif df_feature:
-  list_feature = st.selectbox("Berdasarkan Fitur?", ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
-  hasil = heart_df[heart_df.list_feature == heart_df.list_feature.max()] # berdasarkan maximum
+  hasil = heart_df[heart_df.age == heart_df.age.max()] # berdasarkan maximum
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
   histogram = st.sidebar.checkbox("histogram")
