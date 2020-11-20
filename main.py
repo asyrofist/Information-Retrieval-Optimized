@@ -10,10 +10,8 @@ heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
 
 st.sidebar.header("Fitur Parameter")
-desc          = st.sidebar.checkbox("berdasarkan deskripsi")
-df_feature    = st.sidebar.checkbox("berdasarkan fitur")
-group_feature = st.sidebar.checkbox("berdasarkan group")
-if desc:
+genre = st.radio("What do you choose",('desc_df', 'feature_df', 'group_df'))
+if genre == 'desc_df':
   hasil = heart_df.describe()
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
@@ -30,9 +28,8 @@ if desc:
     correlation = heart_df.corr()
     sns.heatmap(correlation)
     st.pyplot(fig)
-    
 
-elif df_feature:
+elif genre == 'feature_df':
   list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
   hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].max()] # berdasarkan maximum
   st.write(hasil)
@@ -51,7 +48,7 @@ elif df_feature:
     sns.heatmap(correlation)
     st.pyplot(fig)
     
-elif group_feature:
+elif genre == 'group_df':
   list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
   hasil = heart_df.groupby(list_feature).age.describe() # berdasarkan group
   st.write(hasil)
