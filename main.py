@@ -65,7 +65,7 @@ elif genre == 'group_df':
   hasil = heart_df.groupby(list_feature)[list_select] # berdasarkan group
   st.write(hasil)
   hasil_desc = hasil.describe()
-  st.write*hasil_desc)
+  st.write(hasil_desc)
   st.sidebar.subheader("Evaluation Parameter")
   genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
   if genre_df == 'histogram':
