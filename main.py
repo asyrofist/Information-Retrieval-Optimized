@@ -61,10 +61,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      fig, correlation = plt.subplots()
-      correlation = hasil_report
-      sns.heatmap(correlation)
-      st.pyplot(fig)
+      st.write(hasil_report)
       
     elif klas_df == 'gnb' :
       sc = StandardScaler() # standarization
@@ -74,10 +71,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      fig, correlation = plt.subplots()
-      correlation = hasil_report
-      sns.heatmap(correlation)
-      st.pyplot(fig)
+      st.write(hasil_report)
       
     elif klas_df == 'lr' :
       sc = StandardScaler() # standarization
@@ -87,10 +81,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      fig, correlation = plt.subplots()
-      correlation = hasil_report
-      sns.heatmap(correlation)
-      st.pyplot(fig)
+      st.write(hasil_report)
       
     elif klas_df == 'rfc' :
       sc = StandardScaler() # standarization
@@ -100,10 +91,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      fig, correlation = plt.subplots()
-      correlation = hasil_report
-      sns.heatmap(correlation)
-      st.pyplot(fig)
+      st.write(hasil_report)
       
     elif klas_df == 'svc' :
       sc = StandardScaler() # standarization
@@ -113,10 +101,7 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      fig, correlation = plt.subplots()
-      correlation = hasil_report
-      sns.heatmap(correlation)
-      st.pyplot(fig)
+      st.write(hasil_report)
 
     elif klas_df == 'knn' :
       sc = StandardScaler() # standarization
@@ -126,11 +111,8 @@ if genre == 'extract_df':
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
-      fig, correlation = plt.subplots()
-      correlation = hasil_report
-      sns.heatmap(correlation)
-      st.pyplot(fig)
-
+      st.write(hasil_report)
+      
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
   hasil = heart_df.describe()
