@@ -8,7 +8,7 @@ heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
 
 st.sidebar.header("Fitur Parameter")
-desc          = st.sidbear.checkbox("berdasarkan deskripsi")
+desc          = st.sidebar.checkbox("berdasarkan deskripsi")
 df_feature    = st.sidebar.checbox("berdasarkan fitur")
 group_feature = st.sidebar.checkbox("berdasarkan group")
 if desc:
