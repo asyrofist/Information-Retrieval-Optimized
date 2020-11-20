@@ -171,7 +171,7 @@ elif genre == 'feature_df':
       sns.heatmap(correlation)
       st.pyplot(fig)    
   elif list_size == 'average':
-    hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].average()] # berdasarkan maximum
+    hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].mean()] # berdasarkan maximum
     st.write(hasil)
     st.sidebar.subheader("Evaluation Parameter")
     genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
