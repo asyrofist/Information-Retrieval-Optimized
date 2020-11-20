@@ -11,7 +11,7 @@ st.write(heart_df)
 
 st.sidebar.header("Fitur Parameter")
 genre = st.sidebar.radio("What do you choose",('extract_df','desc_df', 'feature_df', 'group_df'))
-if genre == 'Extract_df':
+if genre == 'extract_df':
   st.subheader("Based on Deskripsi")
   list_feature = st.multiselect("Berdasarkan?", 
                     ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
