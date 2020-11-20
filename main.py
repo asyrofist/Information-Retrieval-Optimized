@@ -97,7 +97,7 @@ if genre == 'extract_df':
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
-      Dt = svm.SVC(decision_function_shape='ovo')
+      Dt = SVC(decision_function_shape='ovo')
       Dt.fit(X_train, y_train) # fitting
       y_pred = Dt.predict(X_test)
       hasil_report = classification_report(y_test, y_pred)
