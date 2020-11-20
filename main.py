@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 st.header("Dataset Heart")
 heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
