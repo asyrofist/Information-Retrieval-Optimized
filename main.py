@@ -18,9 +18,9 @@ if desc:
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    hist_data = hasil.hist()
-    fig = ff.create_distplot(hist_data)
-    st.plotly_chart(fig, use_container_width=True)
+    fig, ax = plt.subplots()
+    ax.hist(hasil)
+    st.pyplot(fig)
   elif korelasi:
     correlation = heart_df.corr()
     sns.heatmap(correlation)
@@ -51,8 +51,9 @@ elif group_feature:
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    hist_data = hasil.hist()
-    fig = ff.create_distplot(hist_data)
+    fig, ax = plt.subplots()
+    ax.hist(hasil)
+    st.pyplot(fig)
   elif korelasi:
     correlation = heart_df.corr()
     sns.heatmap(correlation)
