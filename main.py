@@ -118,8 +118,18 @@ if genre == 'extract_df':
       st.text(hasil_report)
       
 elif genre == 'desc_df':
-  st.subheader("Based on Deskripsi")
-  hasil = heart_df.drop(['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'], axis=1).describe()
+  st.subheader("Extract Feature")
+  list_feature = st.multiselect("Feature Select?", 
+                    ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
+                     'ejection_fraction', 'high_blood_pressure', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'], 
+                    ['age','creatinine_phosphokinase', 
+                     'ejection_fraction', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'time'])
+  hasil = heart_df[list_feature]
+  st.write(hasil)
+  st.subheader("Based on Description")
+  hasil = hasil.describe()
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
   genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
