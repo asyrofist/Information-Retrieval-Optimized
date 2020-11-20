@@ -146,14 +146,23 @@ elif genre == 'desc_df':
     st.pyplot(fig)
     
 elif genre == 'feature_df':
+  st.subheader("Extract Feature")
+  list_feature = st.multiselect("Feature Select?", 
+                    ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
+                     'ejection_fraction', 'high_blood_pressure', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'], 
+                    ['age','creatinine_phosphokinase', 
+                     'ejection_fraction', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'time'])
+  hasil = heart_df[list_feature]
+  st.write(hasil)
   st.subheader("Based on Feature")
-  list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 
-                                               'diabetes', 'ejection_fraction', 'high_blood_pressure', 
-                                               'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 
-                                               'smoking', 'time', 'DEATH_EVENT'])
+  list_feature = st.selectbox("Berdasarkan?", ['age','creatinine_phosphokinase', 
+                     'ejection_fraction', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'time'])
   list_size = st.radio("What Size?", ['max', 'min'])
   if list_size == 'max':
-    hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].max()] # berdasarkan maximum
+    hasil = hasil[heart_df[list_feature] == heart_df[list_feature].max()] # berdasarkan maximum
     st.write(hasil)
     st.sidebar.subheader("Evaluation Parameter")
     genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
