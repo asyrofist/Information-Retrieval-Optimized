@@ -131,7 +131,7 @@ elif genre == 'desc_df':
     sns.heatmap(correlation)
     st.pyplot(fig)
     
-        st.sidebar.subheader("Classification Parameter")
+    st.sidebar.subheader("Classification Parameter")
     rasio = st.sidebar.slider('How many rasio?', 0.1, 0.6, 0.3)
     klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'svc', 'knn'))
     list_item = st.selectbox("Feauture Select?", ['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'])
