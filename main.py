@@ -207,14 +207,13 @@ elif genre == 'group_df':
   st.write(hasil)
   st.subheader("Based on Group")
   list_feature = st.multiselect("Berdasarkan?", 
-                    ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
-                     'ejection_fraction', 'high_blood_pressure', 'platelets', 
-                     'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'], 
+                    ['age','creatinine_phosphokinase', 
+                     'ejection_fraction', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'time'], 
                     ['age'])
-  list_select = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 
-                                               'diabetes', 'ejection_fraction', 'high_blood_pressure', 
-                                               'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 
-                                               'smoking', 'time', 'DEATH_EVENT'])
+  list_select = st.selectbox("Berdasarkan?", ['age','creatinine_phosphokinase', 
+                     'ejection_fraction', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'time'])
   hasil = hasil.groupby(list_feature)[list_select].describe() # berdasarkan group
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
