@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 
+
 st.header("Dataset Heart")
 heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
@@ -17,11 +18,12 @@ if desc:
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    hasil.hist()
+    histo = hasil.hist()
+    st.write(histo)
   elif korelasi:
     correlation = heart_df.corr()
-    sns.heatmap(corelation)
-
+    sns.heatmap(correlation)
+    st.pyplot()
     
 elif df_feature:
   list_feature = st.sidebar.selectbox("Berdasarkan?", ['max', 'min', 'average'])
@@ -30,10 +32,12 @@ elif df_feature:
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    hasil.hist()
+    histo = hasil.hist()
+    st.write(histo)
   elif korelasi:
     correlation = heart_df.corr()
-    sns.heatmap(corelation)
+    sns.heatmap(correlation)
+    st.pyplot()
     
 elif group_feature:
   list_feature = st.sidebar.selectbox("Berdasarkan?", ['age	anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
@@ -43,7 +47,9 @@ elif group_feature:
   histogram = st.sidebar.checkbox("histogram")
   korelasi = st.sidebar.checkbox("korelasi")
   if histogram:
-    hasil.hist()
+    histo = hasil.hist()
+    st.write(histo)
   elif korelasi:
     correlation = heart_df.corr()
-    sns.heatmap(corelation)
+    sns.heatmap(correlation)
+    st.plotly
