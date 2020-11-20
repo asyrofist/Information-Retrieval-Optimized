@@ -52,7 +52,7 @@ elif df_feature:
     
 elif group_feature:
   list_feature = st.selectbox("Berdasarkan?", ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 'ejection_fraction', 'high_blood_pressure', 'platelets', 'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
-  hasil = heart_df.groupby(list_feauture).age.describe() # berdasarkan group
+  hasil = heart_df.groupby(list_feature).age.describe() # berdasarkan group
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
   histogram = st.sidebar.checkbox("histogram")
