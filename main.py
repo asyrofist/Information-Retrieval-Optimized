@@ -102,13 +102,13 @@ st.sidebar.header("Fitur Parameter")
 genre = st.sidebar.radio("What do you choose",('extract_df','desc_df', 'feature_df', 'group_df'))
 if genre == 'extract_df':
   st.subheader("Based on Deskripsi")
-  list_feature = st.multiselect("Berdasarkan?", 
+  list_feature = st.multiselect("Feature Select?", 
                     ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
                      'ejection_fraction', 'high_blood_pressure', 'platelets', 
                      'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'], 
-                    ['age', 'anaemia', 'creatinine_phosphokinase', 'diabetes', 
-                     'ejection_fraction', 'high_blood_pressure', 'platelets', 
-                     'serum_creatinine', 'serum_sodium', 'sex', 'smoking', 'time', 'DEATH_EVENT'])
+                    ['age','creatinine_phosphokinase', 
+                     'ejection_fraction', 'platelets', 
+                     'serum_creatinine', 'serum_sodium', 'time'])
   hasil = heart_df[list_feature]
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
@@ -127,11 +127,17 @@ if genre == 'extract_df':
     
     st.sidebar.subheader("Classification Parameter")
     klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'rfr', 'svc', 'svr', 'knn'))
+    list_item = st.selectbox("Feauture Select?", ['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'])
     rasio = st.sidebar.slider('What size?', 0.1, 0.3, 0.6)
+    X = hasil
+    y = hasil[list_item]
+    
     if klas_df == 'dt':
       traintestDT(X, y, rasio)
+      kelas = classification_report(y_test, y_pred)
+      st.write(kelas)
                               
-    IF klas_df == 'lr':
+    if klas_df == 'lr':
       traintestLR(X, y, rasio)
       kelas = classification_report(y_test, y_pred)
       st.write(kelas)
