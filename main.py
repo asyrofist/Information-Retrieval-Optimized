@@ -115,7 +115,7 @@ if genre == 'extract_df':
       
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
-  hasil = heart_df.describe()
+  hasil = heart_df.drop['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'].describe()
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
   genre_df = st.sidebar.radio("What do you choose",('korelasi', 'histogram'))
