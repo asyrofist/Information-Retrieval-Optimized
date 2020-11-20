@@ -46,14 +46,14 @@ if genre == 'extract_df':
     st.pyplot(fig)
     
     st.sidebar.subheader("Classification Parameter")
-    klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'rfr', 'svc', 'svr', 'knn'))
+    klas_df = st.sidebar.radio("What do you choose",('dt', 'gnb', 'lr', 'rfc', 'svc', 'knn'))
     list_item = st.selectbox("Feauture Select?", ['anaemia', 'diabetes', 'high_blood_pressure', 'sex', 'smoking', 'DEATH_EVENT'])
     rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
     y = heart_df[list_item]
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-    if klas_df == 'dt':
+    if klas_df == 'dt' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
@@ -63,6 +63,56 @@ if genre == 'extract_df':
       hasil_report = classification_report(y_test, y_pred)
       st.write(hasil_report)
       
+    if klas_df == 'gnb' :
+      sc = StandardScaler() # standarization
+      X_train = sc.fit_transform(X_train)
+      X_test = sc.transform(X_test)
+      Dt = GaussianNB()
+      Dt.fit(X_train, y_train) # fitting
+      y_pred = Dt.predict(X_test)
+      hasil_report = classification_report(y_test, y_pred)
+      st.write(hasil_report)
+      
+    if klas_df == 'lr' :
+      sc = StandardScaler() # standarization
+      X_train = sc.fit_transform(X_train)
+      X_test = sc.transform(X_test)
+      Dt = LogisticRegression(C = 2)
+      Dt.fit(X_train, y_train) # fitting
+      y_pred = Dt.predict(X_test)
+      hasil_report = classification_report(y_test, y_pred)
+      st.write(hasil_report)
+      
+    if klas_df == 'rfc' :
+      sc = StandardScaler() # standarization
+      X_train = sc.fit_transform(X_train)
+      X_test = sc.transform(X_test)
+      Dt = RandomForestClassifier()
+      Dt.fit(X_train, y_train) # fitting
+      y_pred = Dt.predict(X_test)
+      hasil_report = classification_report(y_test, y_pred)
+      st.write(hasil_report)
+      
+    if klas_df == 'svc' :
+      sc = StandardScaler() # standarization
+      X_train = sc.fit_transform(X_train)
+      X_test = sc.transform(X_test)
+      Dt = svm.SVC(decision_function_shape='ovo')
+      Dt.fit(X_train, y_train) # fitting
+      y_pred = Dt.predict(X_test)
+      hasil_report = classification_report(y_test, y_pred)
+      st.write(hasil_report)
+
+    if klas_df == 'knn' :
+      sc = StandardScaler() # standarization
+      X_train = sc.fit_transform(X_train)
+      X_test = sc.transform(X_test)
+      Dt = KNeighborsClassifier(n_neighbors = 2, p =2, metric = 'minkowski')
+      Dt.fit(X_train, y_train) # fitting
+      y_pred = Dt.predict(X_test)
+      hasil_report = classification_report(y_test, y_pred)
+      st.write(hasil_report)
+
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
   hasil = heart_df.describe()
