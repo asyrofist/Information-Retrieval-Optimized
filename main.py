@@ -10,7 +10,7 @@ heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
 
 st.sidebar.header("Fitur Parameter")
-genre = st.radio("What do you choose",('desc_df', 'feature_df', 'group_df'))
+genre = st.sidebar.radio("What do you choose",('desc_df', 'feature_df', 'group_df'))
 if genre == 'desc_df':
   hasil = heart_df.describe()
   st.write(hasil)
