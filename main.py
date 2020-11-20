@@ -50,7 +50,7 @@ elif genre == 'desc_df':
   elif genre_df == 'korelasi':
     st.subheader("Heatmap Correlation")
     fig, correlation = plt.subplots()
-    correlation = heart_df.corr()
+    correlation = hasil.corr()
     sns.heatmap(correlation)
     st.pyplot(fig)
 
@@ -74,7 +74,7 @@ elif genre == 'feature_df':
     elif genre_df == 'korelasi':
       st.subheader("Heatmap Correlation")
       fig, correlation = plt.subplots()
-      correlation = heart_df.corr()
+      correlation = hasil.corr()
       sns.heatmap(correlation)
       st.pyplot(fig)
   elif list_size == 'min':
@@ -106,7 +106,7 @@ elif genre == 'feature_df':
     elif genre_df == 'korelasi':
       st.subheader("Heatmap Correlation")
       fig, correlation = plt.subplots()
-      correlation = heart_df.corr()
+      correlation = hasil.corr()
       sns.heatmap(correlation)
       st.pyplot(fig)     
   
@@ -133,6 +133,6 @@ elif genre == 'group_df':
   elif genre_df == 'korelasi':
     st.subheader("Heatmap Correlation")
     fig, correlation = plt.subplots()
-    correlation = heart_df.corr()
+    correlation = hasil.corr()
     sns.heatmap(correlation)
     st.pyplot(fig)
