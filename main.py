@@ -51,7 +51,7 @@ if genre == 'extract_df':
     rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
     y = hasil[list_item]
-    st.write(Y)
+    st.write(y)
     if klas_df == 'dt':
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
         sc = StandardScaler() # standarization
@@ -63,41 +63,6 @@ if genre == 'extract_df':
         traintestDT(X, y, rasio)
         kelas = classification_report(y_test, y_pred)
         st.write(kelas)
-                              
-    if klas_df == 'lr':
-      traintestLR(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
-                              
-    elif klas_df == 'gnb':
-      traintestGNB(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
-                              
-    elif klas_df == 'rfc':
-      traintestRFC(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
-                              
-    elif klas_df == 'rfr':
-      traintestRFR(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
-                              
-    elif klas_df == 'svc':
-      traintestSVC(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
-                              
-    elif klas_df == 'svr':
-      traintestSVR(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
-                              
-    elif klas_df == 'knn':
-      traintestKNN(X, y, rasio)
-      kelas = classification_report(y_test, y_pred)
-      st.write(kelas)
     
 elif genre == 'desc_df':
   st.subheader("Based on Deskripsi")
