@@ -4,6 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# st.set_option('deprecation.showPyplotGlobalUse', False)
 st.header("Dataset Heart")
 heart_df = pd.read_csv("heart_failure_clinical_records_dataset.csv")
 st.write(heart_df)
@@ -23,10 +24,12 @@ if desc:
     ax.hist(hasil)
     st.pyplot(fig)
   elif korelasi:
+    fig, correlation = plt.subplots()
     correlation = heart_df.corr()
     sns.heatmap(correlation)
-    st.pyplot()
+    st.pyplot(fig)
     
+
 elif df_feature:
   list_feature = st.sidebar.selectbox("Berdasarkan?", ['max', 'min', 'average'])
   hasil = heart_df[heart_df.anaemia == heart_df.anaemia.list_feature()] # berdasarkan maximum
