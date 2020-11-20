@@ -53,7 +53,7 @@ if genre == 'extract_df':
     y = heart_df[list_item]
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
-    elif klas_df == 'dt' :
+    if klas_df == 'dt' :
       sc = StandardScaler() # standarization
       X_train = sc.fit_transform(X_train)
       X_test = sc.transform(X_test)
