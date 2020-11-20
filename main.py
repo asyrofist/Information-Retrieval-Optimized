@@ -51,9 +51,9 @@ if genre == 'extract_df':
     rasio = st.sidebar.slider('What size?', 0.1, 0.6, 0.3)
     X = hasil
     y = hasil[list_item]
-    st.write(y)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
+    st.write(y_train, y_test)
     if klas_df == 'dt':
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = rasio) # trainsplit
         sc = StandardScaler() # standarization
         X_train = sc.fit_transform(X_train)
         X_test = sc.transform(X_test)
