@@ -15,14 +15,13 @@ if genre == 'desc_df':
   hasil = heart_df.describe()
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
-  histogram = st.sidebar.checkbox("histogram")
-  korelasi = st.sidebar.checkbox("korelasi")
-  if histogram:
+  genre_df = st.sidebar.radio("What do you choose",('histogram', 'korelasi'))
+  if genre_df == 'histogram':
     st.subheader("Histogram Parameter")
     fig, ax = plt.subplots()
     ax.hist(hasil)
     st.pyplot(fig)
-  elif korelasi:
+  elif genre_df == 'korelasi':
     st.subheader("Heatmap Correlation")
     fig, correlation = plt.subplots()
     correlation = heart_df.corr()
@@ -34,14 +33,13 @@ elif genre == 'feature_df':
   hasil = heart_df[heart_df[list_feature] == heart_df[list_feature].max()] # berdasarkan maximum
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
-  histogram = st.sidebar.checkbox("histogram")
-  korelasi = st.sidebar.checkbox("korelasi")
-  if histogram:
+  genre_df = st.sidebar.radio("What do you choose",('histogram', 'korelasi'))
+  if genre_df == 'histogram':
     st.subheader("Histogram Parameter")
     fig, ax = plt.subplots()
     ax.hist(hasil)
     st.pyplot(fig)
-  elif korelasi:
+  elif genre_df == 'korelasi':
     st.subheader("Heatmap Correlation")
     fig, correlation = plt.subplots()
     correlation = heart_df.corr()
@@ -53,14 +51,13 @@ elif genre == 'group_df':
   hasil = heart_df.groupby(list_feature).age.describe() # berdasarkan group
   st.write(hasil)
   st.sidebar.subheader("Evaluation Parameter")
-  histogram = st.sidebar.checkbox("histogram")
-  korelasi = st.sidebar.checkbox("korelasi")
-  if histogram:
+  genre_df = st.sidebar.radio("What do you choose",('histogram', 'korelasi'))
+  if genre_df == 'histogram':
     st.subheader("Histogram Parameter")
     fig, ax = plt.subplots()
     ax.hist(hasil)
     st.pyplot(fig)
-  elif korelasi:
+  elif genre_df == 'korelasi':
     st.subheader("Heatmap Correlation")
     fig, correlation = plt.subplots()
     correlation = heart_df.corr()
