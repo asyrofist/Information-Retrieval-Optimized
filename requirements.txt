@@ -4,3 +4,4 @@ numpy
 streamlit
 matplotlit
 sklearn
+scikit-learn
